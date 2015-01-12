@@ -1,0 +1,4 @@
+/vendor/
+/.c9/
+php.ini
+composer.lock

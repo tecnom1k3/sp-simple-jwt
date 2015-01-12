@@ -1,0 +1,13 @@
+{
+    "name": "technomike/sp-jwt-poc",
+    "description": "JWT PoC for Sitepoint.com",
+    "authors": [
+        {
+            "name": "Technomike",
+            "email": "lordmike_98@hotmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "~1.0"
+    }
+}
