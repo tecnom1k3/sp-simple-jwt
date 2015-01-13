@@ -1,0 +1,10 @@
+<?php
+return array(
+    'jwtKey'   => '', // Key for signing the JWT's
+    'database' => array(
+        'user'     => '', // Database username
+        'password' => '', // Database password
+        'host'     => '', // Database host
+        'name'     => '', // Database schema name
+    ),
+);
