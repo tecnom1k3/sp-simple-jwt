@@ -16,9 +16,29 @@
         <![endif]-->
     </head>
     <body>
-
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-
+        <h1>Login</h1>
+        <div id="loginForm">
+            <form>
+                <table>
+                    <tr>
+                        <td>Usarname</td>
+                        <td><input type="text" name="username" id="username"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="password" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="button" name="submit" value="Submit" id="submit"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <h1>Current JWT</h1>
+        <div id="jwt"></div>
+        <h1>Resource</h1>
+        <div id="resource"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
