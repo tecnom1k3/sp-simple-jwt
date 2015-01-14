@@ -37,17 +37,20 @@
   <div id="jwt" style="display:none">
     <h1>Current JWT</h1>
     <div id="token"></div>
+    <h2>Decoded JWT</h2>
+    <div id="decodedToken"></div>
   </div>
   <div id="resource" style="display:none">
     <h1>Resource</h1>
     <p>
       <input type="submit" name="btnGetResource" id="btnGetResource" value="Get Resource">
-    <a href="resource.php" target="_blank">Try opening the resource directly</a></p>
+      <a href="resource.php" target="_blank">Try opening the resource directly</a></p>
     <div id="resourceContainer"></div>
   </div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script> 
+<script language="JavaScript" type="text/javascript" src="http://kjur.github.io/jsrsasign/jsrsasign-4.1.4-all-min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
