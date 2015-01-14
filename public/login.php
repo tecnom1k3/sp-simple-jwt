@@ -47,9 +47,12 @@ EOL;
                  * Create the token as an array
                  */
                 $data = [
-                    'id'  => $rs['id'], //userid from the users table
-                    'iat' => time(),    //Issued at: time when the token was generated
-                    'jti' => uniqid(),  //Json Token Id: an unique identifier for the token
+                    'id'  => $rs['id'],                 //userid from the users table
+                    'iat' => time(),                    //Issued at: time when the token was generated
+                    'jti' => uniqid(),                  //Json Token Id: an unique identifier for the token
+                    'iss' => $_SERVER['SERVER_NAME'],   //Issuer
+                    'nbf' => time(),                    //Not before
+                    'exp' => time() + 3600,             //Expire
                 ];
                 
                 /*
