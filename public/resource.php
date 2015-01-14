@@ -13,12 +13,12 @@ $headers = getallheaders();
 /*
  * Look for the 'authorization' header
  */
-if (array_key_exists('authorization', $headers)) {
+if (array_key_exists('Authorization', $headers)) {
 
     /*
      * Extract the jwt from the Bearer
      */
-    list($jwt) = sscanf( $headers['authorization'], 'Bearer %s');
+    list($jwt) = sscanf( $headers['Authorization'], 'Bearer %s');
 
     if ($jwt) {
         try {
@@ -29,11 +29,16 @@ if (array_key_exists('authorization', $headers)) {
              */
             $token = JWT::decode($jwt, $config->jwtKey);
 
+            $asset = base64_encode(file_get_contents('assets/r34.png'));
+
             /*
-             * return the id from the token
+             * return protected asset
              */
             header('Content-type: application/json');
-            echo json_encode(['userId' => $token->id]);
+            echo json_encode([
+                'userId' => $token->id,
+                'img'    => $asset
+            ]);
         } catch (Exception $e) {
             /*
              * the token was not able to be decoded.

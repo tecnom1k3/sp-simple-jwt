@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/main.css">
-
-        <!--[if lt IE 9]>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/normalize.min.css">
+<link rel="stylesheet" href="css/main.css">
+<!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-        <![endif]-->
-    </head>
-    <body>
-        <h1>Login</h1>
-        <div id="loginForm">
-            <form>
-                <table>
-                    <tr>
-                        <td>Usarname</td>
-                        <td><input type="text" name="username" id="username"></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><input type="password" name="password" id="password"></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td><input type="button" name="submit" value="Submit" id="submit"></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <h1>Current JWT</h1>
-        <div id="jwt"></div>
-        <h1>Resource</h1>
-        <div id="resource"></div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-
-        <script src="js/main.js"></script>
-    </body>
+<![endif]-->
+</head>
+<body>
+<div style="margin:10px">
+  <div id="loginForm">
+    <h1>Login</h1>
+    <form id="frmLogin">
+      <table>
+        <tr>
+          <td>Usarname</td>
+          <td><input type="text" name="username" id="username"></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" id="password"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="button" name="submit" value="Submit" id="submit"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div id="jwt" style="display:none">
+    <h1>Current JWT</h1>
+    <div id="token"></div>
+  </div>
+  <div id="resource" style="display:none">
+    <h1>Resource</h1>
+    <p>
+      <input type="submit" name="btnGetResource" id="btnGetResource" value="Get Resource">
+    <a href="resource.php" target="_blank">Try opening the resource directly</a></p>
+    <div id="resourceContainer"></div>
+  </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script> 
+<script src="js/main.js"></script>
+</body>
 </html>

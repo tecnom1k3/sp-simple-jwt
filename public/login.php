@@ -61,9 +61,15 @@ EOL;
                  */
                 echo JWT::encode($data, $config->jwtKey);
                 
+            } else {
+                header('HTTP/1.0 401 Unauthorized');
             }
-        } 
+        } else {
+            header('HTTP/1.0 404 Not Found');
+        }
     } catch (Exception $e) {
-        echo $e;
+        header('HTTP/1.0 500 Internal Server Error');
     }
+} else {
+    header('HTTP/1.0 400 Bad Request');
 }
