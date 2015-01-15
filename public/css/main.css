@@ -62,18 +62,22 @@ textarea {
    ========================================================================== */
 
 
+.code {
+	border-color:#339; 
+	border-width:thin; 
+	border-style:dashed; 
+	width:700px; 
+	background-color:#DBE2EE; 
+	word-wrap:break-word; 
+	font-family:'Courier New', Courier, monospace; 
+	padding:5px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.resourceContainer {
+	width:378px;
+	height:284px;
+	background-color:#CCC;
+}
 
 /* ==========================================================================
    Media Queries

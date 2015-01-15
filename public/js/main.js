@@ -11,7 +11,7 @@ $(function(){
             store.claim = b64utos(a[1]);
 
             $("#token").html(store.jwt);
-            $("#decodedToken").html(store.claim);
+            $("#decodedToken").html('<pre>' + JSON.stringify(JSON.parse(store.claim), null, 4) + '</pre>');
             $("#loginForm").hide();
             $("#jwt").show()
             $("#resource").show();
