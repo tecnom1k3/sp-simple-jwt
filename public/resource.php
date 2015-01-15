@@ -4,21 +4,22 @@ chdir(dirname(__DIR__));
 require_once('vendor/autoload.php');
 
 use Zend\Config\Factory;
-
+use Zend\Http\PhpEnvironment\Request;
 /*
  * Get all headers from the HTTP request
  */
-$headers = getallheaders();
+$request = new Request();
+
+$authHeader = $request->getHeader('authorization');
 
 /*
  * Look for the 'authorization' header
  */
-if (array_key_exists('Authorization', $headers)) {
-
+if ($authHeader) {
     /*
      * Extract the jwt from the Bearer
      */
-    list($jwt) = sscanf( $headers['Authorization'], 'Bearer %s');
+    list($jwt) = sscanf( $authHeader->toString(), 'Authorization: Bearer %s');
 
     if ($jwt) {
         try {
