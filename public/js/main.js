@@ -8,8 +8,8 @@ $(function(){
      * @param decodedTokenContainer
      */
     store.exportValues = function(tokenContainer, decodedTokenContainer){
-        tokenContainer.html(this.jwt);
-        decodedTokenContainer.html('<pre>' + JSON.stringify(JSON.parse(this.claim), null, 4) + '</pre>');
+        tokenContainer.html(this.jwt || '&nbsp;');
+        decodedTokenContainer.html( ((this.claim)) ? JSON.stringify(JSON.parse(this.claim), null, 4) : '&nbsp;');
     }
 
     /**
@@ -31,14 +31,11 @@ $(function(){
         this.claim = this.decodeToken(data);
     }
 
-	$("#submit").click(function(e){
+	$("#frmLogin").submit(function(e){
         e.preventDefault();
         $.post('login.php', $("#frmLogin").serialize(), function(data){
             store.setJwt(data);
             store.exportValues($("#token"), $("#decodedToken"));
-            $("#loginForm").hide();
-            $("#jwt").show();
-            $("#resource").show();
         }).fail(function(){
             alert('error');
         });
@@ -53,7 +50,7 @@ $(function(){
             },
             type: 'GET',
             success: function(data) {
-                $("#resourceContainer").html('<img src="data:image/png;base64,' + data.img + '" />');
+                $("#resourceContainer").html('<img src="data:image/jpeg;base64,' + data.img + '" />');
             },
             error: function() {
                 alert('error');
@@ -67,8 +64,5 @@ $(function(){
         store.claim = null;
         store.exportValues($("#token"), $("#decodedToken"));
         $("#resourceContainer").html('');
-        $("#loginForm").show();
-        $("#jwt").hide();
-        $("#resource").hide();
     });
 });

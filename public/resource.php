@@ -64,7 +64,7 @@ if ($authHeader) {
             $token = JWT::decode($jwt, $config->jwtKey);
 
             if (validateToken($token, $config)) {
-                $asset = base64_encode(file_get_contents('assets/r34.png'));
+                $asset = base64_encode(file_get_contents('http://lorempixel.com/200/300/cats/'));
 
                 /*
                  * return protected asset
