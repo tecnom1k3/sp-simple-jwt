@@ -2,18 +2,42 @@ $(function(){
 
     var store = store || {};
 
+    /**
+     * Export the current JWT values to the specified containers
+     * @param tokenContainer
+     * @param decodedTokenContainer
+     */
+    store.exportValues = function(tokenContainer, decodedTokenContainer){
+        tokenContainer.html(this.jwt);
+        decodedTokenContainer.html('<pre>' + JSON.stringify(JSON.parse(this.claim), null, 4) + '</pre>');
+    }
+
+    /**
+     * Decodes the JWT
+     * @param jwt
+     * @returns {*}
+     */
+    store.decodeToken = function(jwt){
+        var a =jwt.split(".");
+        return  b64utos(a[1]);
+    }
+
+    /**
+     * Sets the JWT to the store object
+     * @param data
+     */
+    store.setJwt = function(data){
+        this.jwt = data;
+        this.claim = this.decodeToken(data);
+    }
+
 	$("#submit").click(function(e){
         e.preventDefault();
         $.post('login.php', $("#frmLogin").serialize(), function(data){
-            store.jwt = data;
-
-            var a = store.jwt.split(".");
-            store.claim = b64utos(a[1]);
-
-            $("#token").html(store.jwt);
-            $("#decodedToken").html('<pre>' + JSON.stringify(JSON.parse(store.claim), null, 4) + '</pre>');
+            store.setJwt(data);
+            store.exportValues($("#token"), $("#decodedToken"));
             $("#loginForm").hide();
-            $("#jwt").show()
+            $("#jwt").show();
             $("#resource").show();
         }).fail(function(){
             alert('error');
@@ -35,5 +59,16 @@ $(function(){
                 alert(err);
             }
         });
+    });
+
+    $("#btnExpire").click(function(e){
+        e.preventDefault();
+        store.jwt = null;
+        store.claim = null;
+        store.exportValues($("#token"), $("#decodedToken"));
+        $("#resourceContainer").html('');
+        $("#loginForm").show();
+        $("#jwt").hide();
+        $("#resource").hide();
     });
 });
