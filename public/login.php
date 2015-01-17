@@ -27,11 +27,14 @@ if ($username && $password) {
          * We will fetch user id and password fields for the given username
          */
         $sql = <<<EOL
-        select id, password from users where username = ?
+        SELECT id,
+               password
+        FROM   users
+        WHERE  username = ?
 EOL;
 
         $stmt = $db->prepare($sql);
-        $stmt->execute(array($username));
+        $stmt->execute([$username]);
         $rs = $stmt->fetch();
         
         if ($rs) {
@@ -47,12 +50,15 @@ EOL;
                  * Create the token as an array
                  */
                 $data = [
-                    'id'  => $rs['id'],                 //userid from the users table
-                    'iat' => time(),                    //Issued at: time when the token was generated
-                    'jti' => uniqid(),                  //Json Token Id: an unique identifier for the token
-                    'iss' => $_SERVER['SERVER_NAME'],   //Issuer
-                    'nbf' => time(),                    //Not before
-                    'exp' => time() + 3600,             //Expire
+                    'iat'  => time(),                   // Issued at: time when the token was generated
+                    'jti'  => uniqid(),                 // Json Token Id: an unique identifier for the token
+                    'iss'  => $_SERVER['SERVER_NAME'],  // Issuer
+                    'nbf'  => time(),                   // Not before
+                    'exp'  => time() + 3600,            // Expire
+                    'data' => [                         // Data related to the signer user
+                        'userId'   => $rs['id'],    // userid from the users table
+                        'userName' => $username,    // User name
+                    ]
                 ];
                 
                 /*

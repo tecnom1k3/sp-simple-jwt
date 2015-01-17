@@ -55,8 +55,8 @@ $(function(){
             success: function(data) {
                 $("#resourceContainer").html('<img src="data:image/png;base64,' + data.img + '" />');
             },
-            error: function(err) {
-                alert(err);
+            error: function() {
+                alert('error');
             }
         });
     });
