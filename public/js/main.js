@@ -18,7 +18,7 @@ $(function(){
      * @returns {*}
      */
     store.decodeToken = function(jwt){
-        var a =jwt.split(".");
+        var a = jwt.split(".");
         return  b64utos(a[1]);
     }
 
@@ -63,6 +63,7 @@ $(function(){
         store.jwt = null;
         store.claim = null;
         store.exportValues($("#token"), $("#decodedToken"));
+        $.removeCookie('jwt');
         $("#resourceContainer").html('');
     });
 });

@@ -7,4 +7,5 @@ return array(
         'host'     => '', // Database host
         'name'     => '', // Database schema name
     ),
+    'authMethod' => 'cookies', // Check for jwt on 'cookies' or on 'authorization' header
 );

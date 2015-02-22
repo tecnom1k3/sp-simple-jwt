@@ -45,19 +45,23 @@ EOL;
              * @see http://php.net/manual/en/ref.password.php
              */
             if (password_verify($password, $rs['password'])) {
-                
+
+                $tokenIssuedAt  = time();
+                $tokenId        = uniqid();
+                $tokenExpiresAt = time() + 3600;
+
                 /*
                  * Create the token as an array
                  */
                 $data = [
-                    'iat'  => time(),                   // Issued at: time when the token was generated
-                    'jti'  => uniqid(),                 // Json Token Id: an unique identifier for the token
+                    'iat'  => $tokenIssuedAt,           // Issued at: time when the token was generated
+                    'jti'  => $tokenId,                 // Json Token Id: an unique identifier for the token
                     'iss'  => $_SERVER['SERVER_NAME'],  // Issuer
-                    'nbf'  => time(),                   // Not before
-                    'exp'  => time() + 3600,            // Expire
+                    'nbf'  => $tokenIssuedAt,           // Not before
+                    'exp'  => $tokenExpiresAt,          // Expire
                     'data' => [                         // Data related to the signer user
-                        'userId'   => $rs['id'],    // userid from the users table
-                        'userName' => $username,    // User name
+                        'userId'   => $rs['id'],        // userid from the users table
+                        'userName' => $username,        // User name
                     ]
                 ];
                 
@@ -68,8 +72,13 @@ EOL;
                  * 
                  * The output string can be validated at http://jwt.io/
                  */
-                echo JWT::encode($data, $config->jwtKey);
-                
+                $jwt = JWT::encode($data, $config->jwtKey);
+
+                if ($config->get('authMethod') == 'cookies') {
+                    setcookie('jwt', $jwt, $tokenExpiresAt, '/');
+                }
+
+                echo $jwt;
             } else {
                 header('HTTP/1.0 401 Unauthorized');
             }
