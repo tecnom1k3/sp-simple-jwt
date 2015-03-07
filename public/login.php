@@ -25,9 +25,9 @@ if ($request->isPost()) {
             /*
              * Connect to database to validate credentials
              */
-            $dsn = 'mysql:host=' . $config->database->host . ';dbname=' . $config->database->name;
+            $dsn = 'mysql:host=' . $config->get('database')->get('host') . ';dbname=' . $config->get('database')->get('name');
     
-            $db = new PDO($dsn, $config->database->user, $config->database->password);
+            $db = new PDO($dsn, $config->get('database')->get('user'), $config->get('database')->get('password'));
             
             /*
              * We will fetch user id and password fields for the given username
@@ -75,7 +75,7 @@ EOL;
                      * The output string can be validated at http://jwt.io/
                      */
                     header('Content-type: application/json');
-                    echo json_encode(['jwt' => JWT::encode($data, $config->jwtKey)]);
+                    echo json_encode(['jwt' => JWT::encode($data, $config->get('jwtKey'))]);
                 } else {
                     header('HTTP/1.0 401 Unauthorized');
                 }

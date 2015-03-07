@@ -1,2 +1,3 @@
 RewriteEngine On
-RewriteRule ^token$ /login.php [L]
+RewriteRule ^auth/token$ /login.php [L]
+RewriteRule ^resource/image$ /resource.php [L]
