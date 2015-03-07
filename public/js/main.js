@@ -33,8 +33,8 @@ $(function(){
 
 	$("#frmLogin").submit(function(e){
         e.preventDefault();
-        $.post('login.php', $("#frmLogin").serialize(), function(data){
-            store.setJwt(data);
+        $.post('auth/token', $("#frmLogin").serialize(), function(data){
+            store.setJwt(data.jwt);
             store.exportValues($("#token"), $("#decodedToken"));
         }).fail(function(){
             alert('error');
@@ -44,7 +44,7 @@ $(function(){
     $("#btnGetResource").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: 'resource.php',
+            url: 'resource/image',
             beforeSend: function(request){
                 request.setRequestHeader('Authorization', 'Bearer ' + store.jwt);
             },
