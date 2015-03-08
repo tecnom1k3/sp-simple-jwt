@@ -9,7 +9,18 @@ $(function(){
      */
     store.exportValues = function(tokenContainer, decodedTokenContainer){
         tokenContainer.html(this.jwt || '&nbsp;');
-        decodedTokenContainer.html( ((this.claim)) ? JSON.stringify(JSON.parse(this.claim), null, 4) : '&nbsp;');
+        var parsedJSON = JSON.parse(this.claim);
+        var iat = new Date(parsedJSON.iat * 1000);
+        var nbf = new Date(parsedJSON.nbf * 1000);
+        var exp = new Date(parsedJSON.exp * 1000);
+        var beautifiedJSON = JSON.stringify(parsedJSON, null, 4);
+        decodedTokenContainer.html( ((this.claim)) ? beautifiedJSON : '&nbsp;');
+
+
+
+        $("#iat").html(iat.toDateString() + ' ' + iat.toLocaleTimeString());
+        $("#nbf").html(nbf.toDateString() + ' ' + nbf.toLocaleTimeString());
+        $("#exp").html(exp.toDateString() + ' ' + exp.toLocaleTimeString());
     }
 
     /**
