@@ -60,7 +60,7 @@ EOL;
                         'jti'  => uniqid(),                 // Json Token Id: an unique identifier for the token
                         'iss'  => $_SERVER['SERVER_NAME'],  // Issuer
                         'nbf'  => time() + 10,              // Not before
-                        'exp'  => time() + 3600,            // Expire
+                        'exp'  => time() + 60,              // Expire
                         'data' => [                         // Data related to the signer user
                             'userId'   => $rs['id'],    // userid from the users table
                             'userName' => $username,    // User name
