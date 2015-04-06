@@ -31,7 +31,9 @@ if ($request->isGet()) {
                 /*
                  * decode the jwt using the key from config
                  */
-                $token = JWT::decode($jwt, $config->get('jwtKey'));
+                $secretKey = base64_decode($config->get('jwtKey'));
+                
+                $token = JWT::decode($jwt, $secretKey, array('HS512'));
 
                 $asset = base64_encode(file_get_contents('http://lorempixel.com/200/300/cats/'));
 

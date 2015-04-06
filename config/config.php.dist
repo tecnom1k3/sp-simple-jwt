@@ -1,10 +1,11 @@
 <?php
 return array(
-    'jwtKey'   => '', // Key for signing the JWT's
+    'jwtKey'   => '', // Key for signing the JWT's, I suggest generate it with base64_encode(openssl_random_pseudo_bytes(64))
     'database' => array(
         'user'     => '', // Database username
         'password' => '', // Database password
         'host'     => '', // Database host
         'name'     => '', // Database schema name
     ),
+    'serverName' => 'yourdomain.com',
 );
