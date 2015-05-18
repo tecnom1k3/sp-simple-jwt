@@ -86,7 +86,12 @@ EOL;
                      * keep it secure! You'll need the exact key to verify the 
                      * token later.
                      */
-                    $secretKey = base64_decode($config->get('jwtKey'));
+                    $secretKey = base64_decode($config->get('jwt')->get('key'));
+                    
+                    /*
+                     * Extract the algorithm from the config file too
+                     */
+                    $algorithm = $config->get('jwt')->get('algorithm');
                     
                     /*
                      * Encode the array to a JWT string.
@@ -97,7 +102,7 @@ EOL;
                     $jwt = JWT::encode(
                         $data,      //Data to be encoded in the JWT
                         $secretKey, // The signing key
-                        'HS512'     // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
+                        $algorithm  // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
                         );
                         
                     $unencodedArray = ['jwt' => $jwt];
