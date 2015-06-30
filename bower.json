@@ -1,0 +1,23 @@
+{
+  "name": "sp-simple-jwt",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tecnom1k3/sp-simple-jwt",
+  "authors": [
+    "technomike <miguel@digitec.ws>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "bootstrap": "~3.3.5",
+    "modernizr": "~2.8.3",
+    "jsrsasign": "~4.8.3"
+  }
+}

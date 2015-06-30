@@ -4,3 +4,4 @@ php.ini
 composer.lock
 .idea/
 php_errors.log
+public/bower_components
