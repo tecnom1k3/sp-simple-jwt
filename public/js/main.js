@@ -77,7 +77,7 @@ $(function(){
 
 	$("#frmLogin").submit(function(e){
         e.preventDefault();
-        $.post('auth/token', $("#frmLogin").serialize(), function(data){
+        $.post('auth.php', $("#frmLogin").serialize(), function(data){
             store.setJwt(data.jwt);
             store.exportValues();
         }).fail(function(){
@@ -88,7 +88,7 @@ $(function(){
     $("#btnGetResource").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: 'resource/image',
+            url: 'resource.php',
             beforeSend: function(request){
                 request.setRequestHeader('Authorization', 'Bearer ' + store.jwt);
             },
