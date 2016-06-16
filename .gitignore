@@ -1,6 +1,5 @@
 /vendor/
 /.c9/
 php.ini
-composer.lock
 .idea/
 php_errors.log

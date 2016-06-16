@@ -5,6 +5,7 @@ require_once('vendor/autoload.php');
 
 use Zend\Config\Factory;
 use Zend\Http\PhpEnvironment\Request;
+use Firebase\JWT\JWT;
 
 $request = new Request();
 /*
