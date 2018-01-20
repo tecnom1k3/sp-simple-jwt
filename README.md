@@ -1,11 +1,10 @@
-#JWT on PHP
- ---
+# JWT on PHP
  
-##Disclaimer
+## Disclaimer
 
-By no means should this code ever be used in production ready applications nor be executed on production servers. No security checks and/or validations were enforced. This code was written for educational purposes only, having the scope to showcase basic functionality. Performance, efficiency, security, or reusability were not a priority.
+**By no means should this code should ever be used in production ready applications nor be executed on production servers**. No security checks and/or validations were enforced. This code was written **for educational purposes only**, having the scope to showcase basic functionality. Performance, efficiency, security, or reusability **were not a priority**.
 
-##Install
+## Install
 
 Run `docker-compose build --force-rm; docker-compose up -d` to build the application using docker
 
@@ -32,3 +31,5 @@ CREATE TABLE IF NOT EXISTS `users` (
 ```
 
 `id` and `username` fields should be pretty straight forward.  The `password` field has to be generated using the [`password_hash()`](http://php.net/manual/en/function.password-hash.php) function in PHP 
+
+Open a browser window, and go to http://localhost:8080 to see the application running.
