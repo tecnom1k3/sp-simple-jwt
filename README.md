@@ -7,11 +7,19 @@ By no means should this code ever be used in production ready applications nor b
 
 ##Install
 
-Run `composer install` to install all the library dependencies.
+Run `docker-compose build --force-rm; docker-compose up -d` to build the application using docker
+
+Run the following command to retrieve composer dependencies:
+```
+docker run --rm --interactive --tty \
+    --volume $PWD:/app \
+    --user $(id -u):$(id -g) \
+    composer install
+```
 
 Please create a config file `config/config.php` with the desired signing key and your MySQL database credentials.  You can use the file `config/config.php.dist` as a template.
 
-Additionally create the following table in your database:
+Additionally create the following table in your database, you can connect to it through port 8082:
 
 ```
 CREATE TABLE IF NOT EXISTS `users` (

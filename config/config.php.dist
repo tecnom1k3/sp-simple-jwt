@@ -5,10 +5,10 @@ return array(
         'algorithm' => 'HS512' // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
         ),
     'database' => array(
-        'user'     => '', // Database username
-        'password' => '', // Database password
-        'host'     => '', // Database host
-        'name'     => '', // Database schema name
+        'user'     => 'jwt', // Database username
+        'password' => 'jwt', // Database password
+        'host'     => 'sp-simple-jwt-mysql', // Database host
+        'name'     => 'jwt', // Database schema name
     ),
     'serverName' => 'yourdomain.com',
 );

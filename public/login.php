@@ -13,7 +13,7 @@ $request = new Request();
  */
 if ($request->isPost()) {
     /*
-     * Simple sanitization
+     * Simple sanitation
      */
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -53,7 +53,7 @@ EOL;
                  */
                 if (password_verify($password, $rs['password'])) {
                     
-                    $tokenId    = base64_encode(mcrypt_create_iv(32));
+                    $tokenId    = base64_encode(openssl_random_pseudo_bytes(32));
                     $issuedAt   = time();
                     $notBefore  = $issuedAt + 10;  //Adding 10 seconds
                     $expire     = $notBefore + 60; // Adding 60 seconds
