@@ -1,5 +1,6 @@
-/vendor/
-/.c9/
+vendor/
+.c9/
 php.ini
 .idea/
 php_errors.log
+.DS_Store
